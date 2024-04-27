@@ -1,6 +1,11 @@
 import { useForm } from "react-hook-form";
 function CadastroUsuario() {
-  const { register, setValue, getValues } = useForm();
+  const { register, setValue, getValues, handleSubmit, formState: {errors} } = useForm();
+
+  const sendForm = (formValue) =>{
+    console.log(formValue)
+  }
+
   const buscaCep = () =>{
     let cep = getValues("cep")
     if(!!cep && cep.length == 9){
@@ -19,7 +24,7 @@ function CadastroUsuario() {
   return (
     <>
       <h1>Cadastro Usuario</h1>
-      <form action="">
+      <form action="" onSubmit={handleSubmit(sendForm)}>
         <div>
           <label htmlFor="">Nome Completo</label>
           <input
@@ -29,6 +34,7 @@ function CadastroUsuario() {
               required: "Por favor insira seu nome",
             })}
           />
+          {errors?.nome && <p>{errors.nome?.message}</p>}
         </div>
         <div>
           <label htmlFor="">Gênero</label>
@@ -43,6 +49,7 @@ function CadastroUsuario() {
             <option value="Outro">Outro</option>
             <option value="nao-informado">Prefiro não dizer</option>
           </select>
+          {errors?.genero && <p>{errors.genero?.message}</p>}
         </div>
         <div>
           <label htmlFor="">CPF</label>
@@ -53,15 +60,17 @@ function CadastroUsuario() {
               required: "Por favor informe seu CPF",
             })}
           />
+          {errors?.cpf && <p>{errors.cpf?.message}</p>}
         </div>
         <div>
           <label htmlFor="">Data de Nascimento</label>
           <input
             type="date"
-            {...register("data-de-nascimento", {
+            {...register("dataDeNascimento", {
               required: "Por favor informe sua data de nascimento",
             })}
           />
+          {errors?.dataDeNascimento && <p>{errors.dataDeNascimento?.message}</p>}
         </div>
         <div>
           <label htmlFor="">Email</label>
@@ -72,6 +81,7 @@ function CadastroUsuario() {
               required: "Por favor informe seu email",
             })}
           />
+          {errors?.email && <p>{errors.email?.message}</p>}
         </div>
         <div>
           <label htmlFor="">Senha</label>
@@ -82,6 +92,7 @@ function CadastroUsuario() {
               required: "Por favor informe uma senha",
             })}
           />
+          {errors?.senha && <p>{errors.senha?.message}</p>}
         </div>
 
         {/* campos do endereço */}
@@ -95,6 +106,7 @@ function CadastroUsuario() {
               onBlur : () => buscaCep()
             })}
           />
+          {errors?.cep && <p>{errors.cep?.message}</p>}
         </div>
         <div>
           <label htmlFor="">Logradouro</label>
@@ -125,7 +137,9 @@ function CadastroUsuario() {
               required: "Por favor informe o número da sua residencia",
             })}
           />
+          {errors?.numero && <p>{errors.numero?.message}</p>}
         </div>
+        <button type="submit">Cadastrar</button>
       </form>
     </>
   );
