@@ -1,9 +1,33 @@
 import { useForm } from "react-hook-form";
+import {UsuariosContext} from "../../context/UsuariosContext"
+import { useContext, useState } from "react";
 function CadastroUsuario() {
   const { register, setValue, getValues, handleSubmit, formState: {errors} } = useForm();
-
+  const {usuarios, cadastrarUsuarios} = useContext(UsuariosContext);
+  // const [novoUsuario, setNovoUsuario] = useState({
+  //   bairro : "",
+  //   cep : "",
+  //   cidade : "",
+  //   complemento : "",
+  //   cpf : "",
+  //   dataDeNascimento : "",
+  //   email : "",
+  //   genero : "",
+  //   logradouro : "",
+  //   nome : "",
+  //   numero : "",
+  //   senha : "",
+  //   uf : ""
+  // })
   const sendForm = (formValue) =>{
     console.log(formValue)
+    // setNovoUsuario(formValue);
+    // if(!!novoUsuario){
+
+    // }
+    if(!!formValue){
+      cadastrarUsuarios(formValue);
+    }
   }
 
   const buscaCep = () =>{
