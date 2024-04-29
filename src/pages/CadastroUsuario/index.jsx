@@ -3,14 +3,23 @@ import {UsuariosContext} from "../../context/UsuariosContext"
 import { useContext, useState } from "react";
 function CadastroUsuario() {
   const { register, setValue, getValues, handleSubmit, formState: {errors} } = useForm();
-  const {usuarios, cadastrarUsuarios} = useContext(UsuariosContext);
+  const {usuarios, cadastrarUsuarios, getUsuariosCpf} = useContext(UsuariosContext);
   
+
   const sendForm = (formValue) =>{
     console.log(formValue)
 
     if(!!formValue){
-      cadastrarUsuarios(formValue);su
+      cadastrarUsuarios(formValue);
     }
+  }
+
+  const validaCpf = (value) => {   
+      getUsuariosCpf(value);
+      if(!usuarios.length == 0){
+        return 'Cpf já cadastrado';
+      }
+      return true;
   }
 
   const buscaCep = () =>{
@@ -25,7 +34,7 @@ function CadastroUsuario() {
             setValue("cidade", dados.localidade);
             setValue("uf", dados.uf);
         })
-        .catch((error) => console.log(error))
+        .catch((error) => console.log("fudeu paizao"))
     }
   }
   return (
@@ -65,6 +74,7 @@ function CadastroUsuario() {
             placeholder="Digite seu CPF"
             {...register("cpf", {
               required: "Por favor informe seu CPF",
+              validate: validaCpf
             })}
           />
           {errors?.cpf && <p>{errors.cpf?.message}</p>}

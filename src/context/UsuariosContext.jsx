@@ -3,7 +3,7 @@ import {createContext, useEffect, useState} from "react"
 export const UsuariosContext = createContext()
 
 export const UsuariosContextProvider = ({children}) => {
-    const [usuarios, setUsuarios] = useState()
+    const [usuarios, setUsuarios] = useState([])
 
     useEffect( () => {
         getUsuarios()
@@ -11,6 +11,13 @@ export const UsuariosContextProvider = ({children}) => {
 
     function getUsuarios () {
         fetch("http://localhost:3000/usuarios")
+        .then((response) => response.json())
+        .then((dados) => setUsuarios(dados))
+        .catch((error) => console.log(error))
+    }
+
+    function getUsuariosCpf (cpf) {
+        fetch("http://localhost:3000/usuarios?cpf=" + cpf) 
         .then((response) => response.json())
         .then((dados) => setUsuarios(dados))
         .catch((error) => console.log(error))
@@ -32,7 +39,7 @@ export const UsuariosContextProvider = ({children}) => {
     }
 
     return(
-        <UsuariosContext.Provider value={{usuarios, cadastrarUsuarios}} >
+        <UsuariosContext.Provider value={{usuarios, cadastrarUsuarios, getUsuariosCpf}} >
             {children}
         </UsuariosContext.Provider>
     )
