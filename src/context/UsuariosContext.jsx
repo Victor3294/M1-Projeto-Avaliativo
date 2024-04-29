@@ -50,7 +50,7 @@ export const UsuariosContextProvider = ({children}) => {
                     if(senha == usuario.senha){
                         localStorage.setItem("isAutenticado", true);
                         alert("Logado com sucesso")
-                        window.location.href("/")
+                        window.location.href = "/"
                         return
                     }
                     alert("senha incorreta")
