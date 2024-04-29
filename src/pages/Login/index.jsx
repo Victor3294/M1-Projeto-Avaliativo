@@ -35,6 +35,7 @@ function Login() {
         </div>
         <button type="submit">Entrar</button>
       </form>
+      <p>Não possui uma conta? <Link to="/usuario/cadastro">Cadastre-se</Link></p>
     </>
   );
 }
