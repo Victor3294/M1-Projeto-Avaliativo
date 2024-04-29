@@ -1,0 +1,20 @@
+{
+    "usuarios": [
+        {
+            "id" : 1,
+            "bairro": "Beira Rio",
+            "cep": "88164-183",
+            "cidade": "Biguaçu",
+            "complemento": "",
+            "cpf": "770",
+            "dataDeNascimento": "1111-11-11",
+            "email": "email@email.com",
+            "genero": "Masculino",
+            "logradouro": "Rodovia SC-407",
+            "nome": "Marcao",
+            "numero": "111",
+            "senha": "123456",
+            "uf": "SC"
+        }
+    ]
+}
