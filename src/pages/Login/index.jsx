@@ -4,7 +4,7 @@ import { UsuariosContext } from "../../context/UsuariosContext";
 
 function Login() {
   const {
-    register, handleSubmit
+    register, handleSubmit, formState: {errors}
   } = useForm();
 
   const {login} = useContext(UsuariosContext)
@@ -23,13 +23,15 @@ function Login() {
               required: "Informe seu email.",
             })}
           />
+          {errors?.email && <p>{errors.email?.message}</p>}
         </div>
         <div>
             <label htmlFor="">Senha</label>
             <input type="password" 
             {...register("senha", {
                 required: "Informe sua senha.",
-            })}/>           
+            })}/>
+            {errors?.senha && <p>{errors.senha?.message}</p>}           
         </div>
         <button type="submit">Entrar</button>
       </form>
