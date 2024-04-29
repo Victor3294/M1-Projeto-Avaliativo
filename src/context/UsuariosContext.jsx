@@ -38,8 +38,34 @@ export const UsuariosContextProvider = ({children}) => {
         .catch(() => alert("Erro no cadastro do usuario"))
     }
 
+    async function login(email, senha) {
+        try {
+            const response = await fetch("http://localhost:3000/usuarios")
+            const dados = await response.json();
+
+            let usuarioExiste = false;
+            dados.map(usuario => {
+                if(email == usuario.email){
+                    usuarioExiste = true;
+                    if(senha = usuario.senha){
+                        localStorage.setItem("isAutenticado", true);
+                        alert("Logado com sucesso")
+                        window.location.href("/")
+                        return
+                    }
+                    alert("senha incorreta")
+                    return
+                }
+            })
+            if(!usuarioExiste){
+                alert("Não existe usuario cadastro com esse email");
+            }
+        } catch {
+            
+        }
+    }
     return(
-        <UsuariosContext.Provider value={{usuarios, cadastrarUsuarios, getUsuariosCpf}} >
+        <UsuariosContext.Provider value={{usuarios, cadastrarUsuarios, getUsuariosCpf, login}} >
             {children}
         </UsuariosContext.Provider>
     )
