@@ -1,12 +1,20 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { UsuariosContext } from "../../context/UsuariosContext";
 
 function Login() {
   const {
-    register
+    register, handleSubmit
   } = useForm();
+
+  const {login} = useContext(UsuariosContext)
+
+  function sendForm(formValue){
+    login(formValue.email, formValue.senha)
+  }
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit(sendForm)}>
         <div>
           <label htmlFor="">Email</label>
           <input

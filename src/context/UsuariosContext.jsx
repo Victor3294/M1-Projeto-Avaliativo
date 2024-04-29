@@ -47,7 +47,7 @@ export const UsuariosContextProvider = ({children}) => {
             dados.map(usuario => {
                 if(email == usuario.email){
                     usuarioExiste = true;
-                    if(senha = usuario.senha){
+                    if(senha == usuario.senha){
                         localStorage.setItem("isAutenticado", true);
                         alert("Logado com sucesso")
                         window.location.href("/")
