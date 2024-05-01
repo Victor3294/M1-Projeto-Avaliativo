@@ -1,10 +1,30 @@
 import { useForm } from "react-hook-form"
 
 function CadastroLocalDeColeta() {
-    const { register } = useForm()
+    const { register, handleSubmit, getValues, setValue } = useForm()
+
+    function sendForm(formValue) {
+        console.log(formValue)
+    }
+
+    const buscaCep = () =>{
+        let cep = getValues("cep")
+        if(!!cep && cep.length == 9){
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then((response) => response.json())
+            .then((dados) => {
+                setValue("logradouro", dados.logradouro);
+                setValue("complemento", dados.complemento);
+                setValue("bairro", dados.bairro);
+                setValue("cidade", dados.localidade);
+                setValue("uf", dados.uf);
+            })
+            .catch((error) => console.log("fudeu paizao"))
+        }
+      }
     return (
         <>
-            <form action="">
+            <form onSubmit={handleSubmit(sendForm)}>
                 <div>
                     <label htmlFor="">Nome do Local</label>
                     <input type="text" {...register("nomeLocal", {
@@ -24,6 +44,7 @@ function CadastroLocalDeColeta() {
                         placeholder="Digite seu CEP"
                         {...register("cep", {
                             required: "Por favor informe seu CEP",
+                            onBlur : () => buscaCep()
                         })}
                     />
                 </div>
@@ -50,7 +71,7 @@ function CadastroLocalDeColeta() {
                 <div>
                     <label htmlFor="">Número</label>
                     <input
-                        type="text"
+                        type="number"
                         placeholder="Digite o numero da sua residencia"
                         {...register("numero", {
                             required: "Por favor informe o número da sua residencia",
@@ -86,6 +107,7 @@ function CadastroLocalDeColeta() {
                         <option value="outro">Outro</option>
                     </select>
                 </div>
+                <button type="submit">Cadastrar</button>
             </form>
         </>
     )
