@@ -4,15 +4,19 @@ export const LocalDeColetaContext = createContext();
 
 export const LocalDeColetaContextProvider = ({children}) => {
     const [locaisDeColeta, setLocaisDeColeta] = useState([])
+    const [contagemLocalDeColeta, setContagemLocalDeColeta] = useState()
 
     useEffect(() => {
-        getLocalDeColeta()
+        getLocalDeColeta()     
     }, [])
 
     function getLocalDeColeta() {
         fetch("http://localhost:3000/localDeColeta")
         .then((response) => response.json())
-        .then((dados) => setLocaisDeColeta(dados))
+        .then((dados) => {
+            setLocaisDeColeta(dados)
+            setContagemLocalDeColeta(dados.length)
+        })
         .catch((error) => console.log(error))
     }
 
@@ -35,7 +39,7 @@ export const LocalDeColetaContextProvider = ({children}) => {
 
 
     return(
-        <LocalDeColetaContext.Provider value={{locaisDeColeta, cadastrarLocalDeColeta}}>
+        <LocalDeColetaContext.Provider value={{locaisDeColeta, cadastrarLocalDeColeta, contagemLocalDeColeta}}>
             {children}
         </LocalDeColetaContext.Provider>
     )
