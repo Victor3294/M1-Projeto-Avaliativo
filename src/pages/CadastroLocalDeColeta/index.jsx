@@ -1,11 +1,16 @@
+import { useContext } from "react"
 import { useForm } from "react-hook-form"
+import { LocalDeColetaContext } from "../../context/LocalDeColetaContext"
 
 function CadastroLocalDeColeta() {
     const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm()
+    const {cadastrarLocalDeColeta} = useContext(LocalDeColetaContext)
 
     function sendForm(formValue) {
-        
         console.log(formValue)
+        if(!!formValue){
+            cadastrarLocalDeColeta(formValue);
+        }
     }
 
     const buscaCep = () =>{
@@ -20,7 +25,7 @@ function CadastroLocalDeColeta() {
                 setValue("cidade", dados.localidade);
                 setValue("uf", dados.uf);
             })
-            .catch((error) => console.log("fudeu paizao"))
+            .catch((error) => console.log(error))
         }
       }
     return (
