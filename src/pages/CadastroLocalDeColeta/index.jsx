@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
 
 function CadastroLocalDeColeta() {
-    const { register, handleSubmit, getValues, setValue } = useForm()
+    const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm()
 
     function sendForm(formValue) {
         console.log(formValue)
@@ -30,12 +30,14 @@ function CadastroLocalDeColeta() {
                     <input type="text" {...register("nomeLocal", {
                         required: "Por favor informe o nome do local!"
                     })} />
+                    {errors?.nomeLocal && <p>{errors.nomeLocal?.message}</p>}
                 </div>
                 <div>
                     <label htmlFor="">Descrição do Local</label>
                     <input type="text" {...register("descricaoLocal", {
                         required: "Por favor informe a descrição do local"
                     })} />
+                    {errors?.descricaoLocal && <p>{errors.descricaoLocal?.message}</p>}
                 </div>
                 <div>
                     <label htmlFor="">CEP</label>
@@ -47,6 +49,7 @@ function CadastroLocalDeColeta() {
                             onBlur : () => buscaCep()
                         })}
                     />
+                    {errors?.cep && <p>{errors.cep?.message}</p>}
                 </div>
                 <div>
                     <label htmlFor="">Logradouro</label>
@@ -74,9 +77,10 @@ function CadastroLocalDeColeta() {
                         type="number"
                         placeholder="Digite o numero da sua residencia"
                         {...register("numero", {
-                            required: "Por favor informe o número da sua residencia",
+                            required: "Por favor informe o número da sua residencia"
                         })}
                     />
+                    {errors?.numero && <p>{errors.numero?.message}</p>}
                 </div>
                 <div>
                     <label htmlFor="">Latitude</label>
@@ -85,17 +89,19 @@ function CadastroLocalDeColeta() {
                         {...register("latitude", {
                             required: "Por favor informe a latitude geográfica do local"
                         })} />
+                    {errors?.latitude && <p>{errors.latitude?.message}</p>}
                 </div>
                 <div>
                     <label htmlFor="">Longitude</label>
                     <input type="text" placeholder="Longitude geográfica do local" {...register("longitude", {
                         required: "Por favor informe a longitude geográfica do local"
                     })} />
+                    {errors?.longitude && <p>{errors.longitude?.message}</p>}
                 </div>
                 <div>
                     <label htmlFor="">Tipos de residuos aceitos</label>
                     <select {...register("tiposResiduos", {
-                        required: "Por favor selecione um dos residuos"
+                        required: "Por favor selecione um dos tipos de residuos"
                     })}>
                         <option value="">Selecione um dos tipos de residuos</option>
                         <option value="vidro">Vidro</option>
@@ -106,6 +112,7 @@ function CadastroLocalDeColeta() {
                         <option value="bateria">Bateria</option>
                         <option value="outro">Outro</option>
                     </select>
+                    {errors?.tiposResiduos && <p>{errors.tiposResiduos?.message}</p>}
                 </div>
                 <button type="submit">Cadastrar</button>
             </form>
