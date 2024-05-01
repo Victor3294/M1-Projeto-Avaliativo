@@ -4,6 +4,7 @@ function CadastroLocalDeColeta() {
     const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm()
 
     function sendForm(formValue) {
+        
         console.log(formValue)
     }
 
@@ -114,6 +115,8 @@ function CadastroLocalDeColeta() {
                     </select>
                     {errors?.tiposResiduos && <p>{errors.tiposResiduos?.message}</p>}
                 </div>
+                <input type="hidden" {...register("idUsuario")} value={JSON.parse(localStorage.getItem("IdLogado"))}/>
+
                 <button type="submit">Cadastrar</button>
             </form>
         </>
