@@ -4,6 +4,7 @@ export const UsuariosContext = createContext()
 
 export const UsuariosContextProvider = ({children}) => {
     const [usuarios, setUsuarios] = useState([])
+    const [contagemUsuarios, setContagemUsuarios] = useState()
 
     useEffect( () => {
         getUsuarios()
@@ -12,7 +13,10 @@ export const UsuariosContextProvider = ({children}) => {
     function getUsuarios () {
         fetch("http://localhost:3000/usuarios")
         .then((response) => response.json())
-        .then((dados) => setUsuarios(dados))
+        .then((dados) => {
+            setUsuarios(dados)
+            setContagemUsuarios(dados.length)
+        })
         .catch((error) => console.log(error))
     }
 
