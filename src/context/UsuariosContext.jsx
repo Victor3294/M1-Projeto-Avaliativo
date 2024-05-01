@@ -49,6 +49,7 @@ export const UsuariosContextProvider = ({children}) => {
                     usuarioExiste = true;
                     if(senha == usuario.senha){
                         localStorage.setItem("isAutenticado", true);
+                        localStorage.setItem("IdLogado", usuario.id);
                         alert("Logado com sucesso")
                         window.location.href = "/"
                         return
