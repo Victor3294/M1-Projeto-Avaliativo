@@ -16,7 +16,7 @@ function CadastroUsuario() {
 
   const validaCpf = (value) => {   
       getUsuariosCpf(value);
-      if(!usuarios.length == 0){
+      if(usuarios.length != 0){
         return 'Cpf já cadastrado';
       }
       return true;
@@ -34,7 +34,7 @@ function CadastroUsuario() {
             setValue("cidade", dados.localidade);
             setValue("uf", dados.uf);
         })
-        .catch((error) => console.log("fudeu paizao"))
+        .catch((error) => console.log(error))
     }
   }
   return (
@@ -148,7 +148,7 @@ function CadastroUsuario() {
         <div>
           <label htmlFor="">Número</label>
           <input
-            type="text"
+            type="number"
             placeholder="Digite o numero da sua residencia"
             {...register("numero", {
               required: "Por favor informe o número da sua residencia",
