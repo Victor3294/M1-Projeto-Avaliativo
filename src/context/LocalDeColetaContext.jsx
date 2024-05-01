@@ -16,11 +16,28 @@ export const LocalDeColetaContextProvider = ({children}) => {
         .catch((error) => console.log(error))
     }
 
+    function cadastrarLocalDeColeta(localDeColeta) {
+        fetch("http://localhost:3000/localDeColeta", {
+            method : "POST",
+            body : JSON.stringify(localDeColeta),
+            headers : {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(() => {
+            alert("Local de coleta cadastrado com sucesso")
+            getLocalDeColeta()
+        })
+        .catch(() => {
+            alert("Erro ao cadastrar local de coleta")
+        })
+    }
+
 
     return(
-        <LocalDeColetaContextProvider>
+        <LocalDeColetaContext.Provider value={{locaisDeColeta, cadastrarLocalDeColeta}}>
             {children}
-        </LocalDeColetaContextProvider>
+        </LocalDeColetaContext.Provider>
     )
 }
 
