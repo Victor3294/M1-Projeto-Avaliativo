@@ -118,6 +118,7 @@ function CadastroLocalDeColeta() {
                         <option value="organico">Orgânico</option>
                         <option value="plastico">Plástico</option>
                         <option value="bateria">Bateria</option>
+                        <option value="papelao">Papelão</option>
                         <option value="outro">Outro</option>
                     </select>
                     {errors?.tiposResiduos && <p>{errors.tiposResiduos?.message}</p>}
