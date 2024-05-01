@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { LocalDeColetaContext } from "../../context/LocalDeColetaContext"
+import Menu from "../../components/Menu"
 
 function CadastroLocalDeColeta() {
     const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm()
@@ -30,6 +31,7 @@ function CadastroLocalDeColeta() {
       }
     return (
         <>
+            <Menu></Menu>
             <form onSubmit={handleSubmit(sendForm)}>
                 <div>
                     <label htmlFor="">Nome do Local</label>
