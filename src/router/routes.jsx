@@ -35,7 +35,7 @@ const routes = createBrowserRouter([
                 element : <Dashboard />
             },
             {
-                path : "/cadastroLocalDeColeta",
+                path : "/cadastroLocalDeColeta/:id?",
                 element: <CadastroLocalDeColeta />
             },
             {
