@@ -9,7 +9,10 @@ function ListagemLocalDeColeta(){
         <>
             <Menu></Menu>
             {!!locaisDeColeta && locaisDeColeta.map((localDeColeta) => (
-                <CardLocalColeta key={localDeColeta.id} localDeColeta={localDeColeta}></CardLocalColeta>
+                <CardLocalColeta key={localDeColeta.id} localDeColeta={localDeColeta}>
+                    <button>Editar</button>
+                    <button>Excluir</button>
+                </CardLocalColeta>
             ))}
         </>
     )
