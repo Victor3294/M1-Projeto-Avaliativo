@@ -1,7 +1,7 @@
 {
   "usuarios": [
     {
-      "id": 1,
+      "id": "1",
       "bairro": "Beira Rio",
       "cep": "88164-183",
       "cidade": "Biguaçu",
@@ -95,6 +95,104 @@
       "cidade": "Boa Vista",
       "uf": "RR",
       "numero": "460"
+    }
+  ],
+  "localDeColeta": [
+    {
+      "id": "eb00",
+      "nomeLocal": "Mercadin",
+      "descricaoLocal": "local de coleta ficticio, onde eles coletam metal para reciclagem",
+      "cep": "88115-530",
+      "logradouro": "Rua Tico-Tico",
+      "complemento": "",
+      "bairro": "Serraria",
+      "cidade": "São José",
+      "uf": "SC",
+      "numero": "88",
+      "latitude": "-27.538249485147947",
+      "longitude": "-48.62616856442993",
+      "tiposResiduos": "metal",
+      "idUsuario": "ed4a"
+    },
+    {
+      "id": "6c99",
+      "nomeLocal": "Ecoponto Central",
+      "descricaoLocal": "O Ecoponto do Centro é um local de coleta de recicláveis localizado no coração da cidade, próximo à área comercial. Ele aceita apenas papel para reciclagem.",
+      "cep": "44091-558",
+      "logradouro": "Caminho 17A",
+      "complemento": "(Feira VII)",
+      "bairro": "Tomba",
+      "cidade": "Feira de Santana",
+      "uf": "BA",
+      "numero": "123",
+      "latitude": "-12.995365",
+      "longitude": "-38.495911",
+      "tiposResiduos": "papel",
+      "idUsuario": "ed4a"
+    },
+    {
+      "id": "07ec",
+      "nomeLocal": "Ponto Verde do Parque",
+      "descricaoLocal": "O Ponto Verde do Parque é uma iniciativa de reciclagem situada em um parque público, próximo à área de recreação. Ele aceita apenas plástico para reciclagem.",
+      "cep": "58034-280",
+      "logradouro": "Rua Odilon de Carvalho",
+      "complemento": "",
+      "bairro": "João Agripino",
+      "cidade": "João Pessoa",
+      "uf": "PB",
+      "numero": "456",
+      "latitude": "-7.132496",
+      "longitude": "-34.839788",
+      "tiposResiduos": "plastico",
+      "idUsuario": "66e7"
+    },
+    {
+      "id": "216e",
+      "nomeLocal": "Cooperativa de Reciclagem Vila Verde",
+      "descricaoLocal": "A Cooperativa de Reciclagem Vila Verde é uma organização comunitária que promove a reciclagem e reutilização de materiais. Localizada no bairro Vila Verde, ela aceita apenas vidro para reciclagem.",
+      "cep": "59141-530",
+      "logradouro": "Rua Etelvina Moura Cabral",
+      "complemento": "",
+      "bairro": "Rosa dos Ventos",
+      "cidade": "Parnamirim",
+      "uf": "RN",
+      "numero": "789",
+      "latitude": "-5.821974",
+      "longitude": "-35.252996",
+      "tiposResiduos": "vidro",
+      "idUsuario": "1"
+    },
+    {
+      "id": "45c3",
+      "nomeLocal": "Ponto Ecológico da Praia",
+      "descricaoLocal": "O Ponto Ecológico da Praia é um local de coleta de recicláveis situado na área costeira, próximo à orla marítima. Ele aceita apenas metal para reciclagem.",
+      "cep": "35051-830",
+      "logradouro": "Rua Décima Primeira",
+      "complemento": "",
+      "bairro": "Vila Bretas",
+      "cidade": "Governador Valadares",
+      "uf": "MG",
+      "numero": "101",
+      "latitude": "-19.775850",
+      "longitude": "-42.138870",
+      "tiposResiduos": "metal",
+      "idUsuario": "1"
+    },
+    {
+      "id": "41d0",
+      "nomeLocal": "Centro de Triagem Sustentável",
+      "descricaoLocal": "O Centro de Triagem Sustentável é uma instalação dedicada à separação e processamento de materiais recicláveis. Localizado em uma área industrial, ele aceita apenas papelão para reciclagem.",
+      "cep": "69901-701",
+      "logradouro": "Rua Thaumaturgo",
+      "complemento": "",
+      "bairro": "Vitória",
+      "cidade": "Rio Branco",
+      "uf": "AC",
+      "numero": "201",
+      "latitude": "-9.966709",
+      "longitude": "-67.800617",
+      "tiposResiduos": "papelao",
+      "idUsuario": "1"
     }
   ]
 }
