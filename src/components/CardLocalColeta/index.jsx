@@ -1,18 +1,18 @@
 function CardLocalColeta({localDeColeta}){
     return(
         <div>
-            <span>Nome do Local: {localDeColeta.nomeLocal}</span>
-            <span>Descrição do Local: {localDeColeta.descricaoLocal}</span>
-            <span>CEP: {localDeColeta.cep}</span>
-            <span>Logradouro: {localDeColeta.logradouro}</span>
-            <span>Complemento: {localDeColeta.complemento}</span>
-            <span>Bairro: {localDeColeta.bairro}</span>
-            <span>Cidade: {localDeColeta.cidade}</span>
-            <span>Estado: {localDeColeta.uf}</span>
-            <span>Numero: {localDeColeta.numero}</span>
-            <span>Latitude: {localDeColeta.latitude}</span>
-            <span>Longitude: {localDeColeta.longitude}</span>
-            <span>Tipo de Residuo que Coleta: {localDeColeta.tiposResiduos}</span>
+            <p>Nome do Local: {localDeColeta.nomeLocal}</p>
+            <p>Descrição do Local: {localDeColeta.descricaoLocal}</p>
+            <p>CEP: {localDeColeta.cep}</p>
+            <p>Logradouro: {localDeColeta.logradouro}</p>
+            <p>Complemento: {localDeColeta.complemento}</p>
+            <p>Bairro: {localDeColeta.bairro}</p>
+            <p>Cidade: {localDeColeta.cidade}</p>
+            <p>Estado: {localDeColeta.uf}</p>
+            <p>Numero: {localDeColeta.numero}</p>
+            <p>Latitude: {localDeColeta.latitude}</p>
+            <p>Longitude: {localDeColeta.longitude}</p>
+            <p>Tipo de Residuo que Coleta: {localDeColeta.tiposResiduos}</p>
         </div>
     )
 }
