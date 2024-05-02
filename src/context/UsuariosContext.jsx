@@ -73,7 +73,7 @@ export const UsuariosContextProvider = ({children}) => {
                 alert("Não existe usuario cadastro com esse email");
             }
         } catch {
-            
+            console.log("Erro na tentativa de login")
         }
     }
     return(
