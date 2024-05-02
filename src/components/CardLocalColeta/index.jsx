@@ -1,11 +1,4 @@
-import { useContext, useEffect } from "react"
-import { UsuariosContext } from "../../context/UsuariosContext"
-
-function CardLocalColeta({localDeColeta}){
-    const {usuarios, getUsuariosPorId} = useContext(UsuariosContext)
-    useEffect(() => {
-        getUsuariosPorId(localDeColeta.idUsuario)
-    }, [localDeColeta])
+function CardLocalColeta({localDeColeta}) {            
     return(
         <div>
             <p>Nome do Local: {localDeColeta.nomeLocal}</p>
@@ -20,7 +13,6 @@ function CardLocalColeta({localDeColeta}){
             <p>Latitude: {localDeColeta.latitude}</p>
             <p>Longitude: {localDeColeta.longitude}</p>
             <p>Tipo de Residuo que Coleta: {localDeColeta.tiposResiduos}</p>
-            <p>Quem cadastrou : {usuarios.nome}</p>
         </div>
     )
 }
