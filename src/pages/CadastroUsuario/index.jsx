@@ -131,7 +131,10 @@ function CadastroUsuario() {
         </div>
         <div>
           <label htmlFor="">Complemento</label>
-          <input type="text" {...register("complemento")} disabled />
+          <input type="text" {...register("complemento", {
+            required: "Por favor informe um complemento para sua residencia, EX(casa azul, Ap 111, algo que descreva onde voce mora)"
+          })} />
+          {errors?.complemento && <p>{errors.complemento?.message}</p>}
         </div>
         <div>
           <label htmlFor="">Bairro</label>
