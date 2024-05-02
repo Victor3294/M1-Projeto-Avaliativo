@@ -20,6 +20,13 @@ export const UsuariosContextProvider = ({children}) => {
         .catch((error) => console.log(error))
     }
 
+    function getUsuariosPorId(id) {
+        fetch("http://localhost:3000/usuarios/" + id)
+        .then((response) => response.json())
+        .then((dados) => setUsuarios(dados))
+        .catch((error) => console.log(error))
+    }
+
     function getUsuariosCpf (cpf) {
         fetch("http://localhost:3000/usuarios?cpf=" + cpf) 
         .then((response) => response.json())
@@ -70,7 +77,7 @@ export const UsuariosContextProvider = ({children}) => {
         }
     }
     return(
-        <UsuariosContext.Provider value={{usuarios, cadastrarUsuarios, getUsuariosCpf, login, contagemUsuarios}} >
+        <UsuariosContext.Provider value={{usuarios, cadastrarUsuarios, getUsuariosCpf, login, contagemUsuarios, getUsuariosPorId}} >
             {children}
         </UsuariosContext.Provider>
     )
