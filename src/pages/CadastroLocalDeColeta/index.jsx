@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { LocalDeColetaContext } from "../../context/LocalDeColetaContext"
 import Menu from "../../components/Menu"
@@ -6,12 +6,16 @@ import { useParams } from "react-router-dom"
 
 function CadastroLocalDeColeta() {
     const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm()
-    const {cadastrarLocalDeColeta, getLocalDeColetaPorId, localDeColeta} = useContext(LocalDeColetaContext)
+    const {cadastrarLocalDeColeta, getLocalDeColetaPorId, localDeColeta, editarLocalDeColeta} = useContext(LocalDeColetaContext)
     const {id} = useParams()
     function sendForm(formValue) {
         console.log(formValue)
         if(!!formValue){
-            cadastrarLocalDeColeta(formValue);
+            if(!!id){
+                cadastrarLocalDeColeta(formValue)
+                return
+            }
+            editarLocalDeColeta(formValue, id)
         }
     }
     async function editarLocal (id)  {
