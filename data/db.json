@@ -99,12 +99,11 @@
   ],
   "localDeColeta": [
     {
-      "id": "eb00",
-      "nomeLocal": "Mercadin",
+      "nomeLocal": "Mercadinho",
       "descricaoLocal": "local de coleta ficticio, onde eles coletam metal para reciclagem",
       "cep": "88115-530",
       "logradouro": "Rua Tico-Tico",
-      "complemento": "",
+      "complemento": "mercado amarelo",
       "bairro": "Serraria",
       "cidade": "São José",
       "uf": "SC",
@@ -112,7 +111,8 @@
       "latitude": "-27.538249485147947",
       "longitude": "-48.62616856442993",
       "tiposResiduos": "metal",
-      "idUsuario": "ed4a"
+      "idUsuario": "1",
+      "id": "eb00"
     },
     {
       "id": "6c99",
