@@ -12,17 +12,17 @@ function CadastroLocalDeColeta() {
     function sendForm(formValue) {
         console.log(formValue)
         if(!!formValue){
-            if(!!id){
+            if(!id){
                 cadastrarLocalDeColeta(formValue)
                 return
             }
             editarLocalDeColeta(formValue, id)
         }
     }
-    async function mostrarLocalEditar (id)  {
+    function mostrarLocalEditar (id)  {
         try{
             if(!!id){
-                await getLocalDeColetaPorId(id)
+                getLocalDeColetaPorId(id)
                 setValue("cep", localDeColeta.cep)
                 setValue("descricaoLocal", localDeColeta.descricaoLocal)
                 setValue("latitude", localDeColeta.latitude)
@@ -171,7 +171,7 @@ function CadastroLocalDeColeta() {
                     </select>
                     {errors?.tiposResiduos && <p>{errors.tiposResiduos?.message}</p>}
                 </div>
-                <input type="hidden" {...register("idUsuario")} value={JSON.parse(localStorage.getItem("IdLogado"))}/>
+                <input type="hidden" {...register("idUsuario")} value={localStorage.getItem("IdLogado")}/>
 
                 <button type="submit">Cadastrar</button>
             </form>
