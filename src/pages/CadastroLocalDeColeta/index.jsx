@@ -1,19 +1,26 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { LocalDeColetaContext } from "../../context/LocalDeColetaContext"
 import Menu from "../../components/Menu"
+import { useParams } from "react-router-dom"
 
 function CadastroLocalDeColeta() {
     const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm()
     const {cadastrarLocalDeColeta} = useContext(LocalDeColetaContext)
-
+    const {id} = useParams()
     function sendForm(formValue) {
         console.log(formValue)
         if(!!formValue){
             cadastrarLocalDeColeta(formValue);
         }
     }
+    const editarLocal = (id) => {
+        console.log(id)
+    }
 
+    useEffect(() => {
+        editarLocal(id)
+    }, [id])
     const buscaCep = () =>{
         let cep = getValues("cep")
         if(!!cep && cep.length == 9){
