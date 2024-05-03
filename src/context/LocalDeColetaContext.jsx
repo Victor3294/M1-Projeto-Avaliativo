@@ -59,8 +59,18 @@ export const LocalDeColetaContextProvider = ({children}) => {
         .catch(() => alert("Erro ao tentar excluir o local de coleta"))
     } 
 
+    function editarLocalDeColeta(localColeta, id){
+        fetch("http://localhost:3000/localDeColeta/"+id, {
+            method : "PUT",
+            body : JSON.stringify(localColeta),
+            headers : {
+                'Content-Type': 'application/json'
+            },
+        })
+    }
+
     return(
-        <LocalDeColetaContext.Provider value={{locaisDeColeta, cadastrarLocalDeColeta, contagemLocalDeColeta, excluirLocalDeColeta, getLocalDeColetaPorId, localDeColeta}}>
+        <LocalDeColetaContext.Provider value={{locaisDeColeta, cadastrarLocalDeColeta, contagemLocalDeColeta, excluirLocalDeColeta, getLocalDeColetaPorId, localDeColeta, editarLocalDeColeta}}>
             {children}
         </LocalDeColetaContext.Provider>
     )
