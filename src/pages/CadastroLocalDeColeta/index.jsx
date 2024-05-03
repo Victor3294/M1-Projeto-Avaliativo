@@ -1,26 +1,63 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { LocalDeColetaContext } from "../../context/LocalDeColetaContext"
 import Menu from "../../components/Menu"
 import { useParams } from "react-router-dom"
 
 function CadastroLocalDeColeta() {
+    const [carregando, setCarregando] = useState(true)
     const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm()
-    const {cadastrarLocalDeColeta} = useContext(LocalDeColetaContext)
+    const {cadastrarLocalDeColeta, getLocalDeColetaPorId, localDeColeta, editarLocalDeColeta} = useContext(LocalDeColetaContext)
     const {id} = useParams()
     function sendForm(formValue) {
         console.log(formValue)
         if(!!formValue){
-            cadastrarLocalDeColeta(formValue);
+            if(!!id){
+                cadastrarLocalDeColeta(formValue)
+                return
+            }
+            editarLocalDeColeta(formValue, id)
         }
     }
-    const editarLocal = (id) => {
-        console.log(id)
+    async function mostrarLocalEditar (id)  {
+        try{
+            if(!!id){
+                await getLocalDeColetaPorId(id)
+                setValue("cep", localDeColeta.cep)
+                setValue("descricaoLocal", localDeColeta.descricaoLocal)
+                setValue("latitude", localDeColeta.latitude)
+                setValue("longitude", localDeColeta.longitude)
+                setValue("nomeLocal", localDeColeta.nomeLocal)
+                setValue("numero", localDeColeta.numero)
+                setValue("tiposResiduos", localDeColeta.tiposResiduos)
+                setValue("complemento", localDeColeta.complemento)
+                setValue("bairro", localDeColeta.bairro)
+                setValue("logradouro", localDeColeta.logradouro)
+                setValue("cidade", localDeColeta.cidade)
+                setValue("uf", localDeColeta.uf)
+            }
+        }
+        catch (error){
+            console.log(error)
+        }
+        
     }
 
     useEffect(() => {
-        editarLocal(id)
-    }, [id])
+        async function carregandoEdição () {
+            try {
+                setCarregando(true)
+                await mostrarLocalEditar(id)
+            }
+            catch (error){
+                console.log(error)
+            }
+            finally{
+                setCarregando(false)
+            }
+        }
+        carregandoEdição()
+    }, [])
     const buscaCep = () =>{
         let cep = getValues("cep")
         if(!!cep && cep.length == 9){
@@ -39,6 +76,7 @@ function CadastroLocalDeColeta() {
     return (
         <>
             <Menu></Menu>
+            {carregando && <p>Carrgando...</p>}
             <form onSubmit={handleSubmit(sendForm)}>
                 <div>
                     <label htmlFor="">Nome do Local</label>

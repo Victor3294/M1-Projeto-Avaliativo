@@ -4,6 +4,7 @@ export const LocalDeColetaContext = createContext();
 
 export const LocalDeColetaContextProvider = ({children}) => {
     const [locaisDeColeta, setLocaisDeColeta] = useState([])
+    const [localDeColeta, setLocalDeColeta] = useState([])
     const [contagemLocalDeColeta, setContagemLocalDeColeta] = useState()
 
     useEffect(() => {
@@ -21,9 +22,9 @@ export const LocalDeColetaContextProvider = ({children}) => {
     }
 
     function getLocalDeColetaPorId(id){
-        fetch("http://localhost:3000/localDeColeta"+id)
+        fetch("http://localhost:3000/localDeColeta/"+id)
         .then((response) => response.json())
-        .then((dados) => setLocaisDeColeta(dados))
+        .then((dados) => setLocalDeColeta(dados))
         .catch((error) => console.log(error))
     }
 
@@ -58,8 +59,18 @@ export const LocalDeColetaContextProvider = ({children}) => {
         .catch(() => alert("Erro ao tentar excluir o local de coleta"))
     } 
 
+    function editarLocalDeColeta(localColeta, id){
+        fetch("http://localhost:3000/localDeColeta/"+id, {
+            method : "PUT",
+            body : JSON.stringify(localColeta),
+            headers : {
+                'Content-Type': 'application/json'
+            },
+        })
+    }
+
     return(
-        <LocalDeColetaContext.Provider value={{locaisDeColeta, cadastrarLocalDeColeta, contagemLocalDeColeta, excluirLocalDeColeta, getLocalDeColetaPorId}}>
+        <LocalDeColetaContext.Provider value={{locaisDeColeta, cadastrarLocalDeColeta, contagemLocalDeColeta, excluirLocalDeColeta, getLocalDeColetaPorId, localDeColeta, editarLocalDeColeta}}>
             {children}
         </LocalDeColetaContext.Provider>
     )
