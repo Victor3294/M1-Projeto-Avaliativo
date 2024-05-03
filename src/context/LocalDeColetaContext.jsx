@@ -67,6 +67,11 @@ export const LocalDeColetaContextProvider = ({children}) => {
                 'Content-Type': 'application/json'
             },
         })
+        .then(() => {
+            alert("edição do local de coleta feita com sucesso")
+            getLocalDeColeta()
+        })
+        .catch((error) => console.log(error))
     }
 
     return(
