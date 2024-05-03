@@ -20,6 +20,13 @@ export const LocalDeColetaContextProvider = ({children}) => {
         .catch((error) => console.log(error))
     }
 
+    function getLocalDeColetaPorId(id){
+        fetch("http://localhost:3000/localDeColeta"+id)
+        .then((response) => response.json())
+        .then((dados) => setLocaisDeColeta(dados))
+        .catch((error) => console.log(error))
+    }
+
     function cadastrarLocalDeColeta(localDeColeta) {
         fetch("http://localhost:3000/localDeColeta", {
             method : "POST",
@@ -52,7 +59,7 @@ export const LocalDeColetaContextProvider = ({children}) => {
     } 
 
     return(
-        <LocalDeColetaContext.Provider value={{locaisDeColeta, cadastrarLocalDeColeta, contagemLocalDeColeta, excluirLocalDeColeta}}>
+        <LocalDeColetaContext.Provider value={{locaisDeColeta, cadastrarLocalDeColeta, contagemLocalDeColeta, excluirLocalDeColeta, getLocalDeColetaPorId}}>
             {children}
         </LocalDeColetaContext.Provider>
     )
