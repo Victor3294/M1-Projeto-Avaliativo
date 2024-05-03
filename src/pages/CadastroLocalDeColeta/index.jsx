@@ -18,17 +18,23 @@ function CadastroLocalDeColeta() {
             editarLocalDeColeta(formValue, id)
         }
     }
-    async function editarLocal (id)  {
+    async function mostrarLocalEditar (id)  {
         try{
-            await getLocalDeColetaPorId(id)
-            setValue("cep", localDeColeta.cep)
-            setValue("descricaoLocal", localDeColeta.descricaoLocal)
-            setValue("latitude", localDeColeta.latitude)
-            setValue("longitude", localDeColeta.longitude)
-            setValue("nomeLocal", localDeColeta.nomeLocal)
-            setValue("numero", localDeColeta.numero)
-            setValue("tiposResiduos", localDeColeta.tiposResiduos)
-            // console.log(localDeColeta)
+            if(!!id){
+                await getLocalDeColetaPorId(id)
+                setValue("cep", localDeColeta.cep)
+                setValue("descricaoLocal", localDeColeta.descricaoLocal)
+                setValue("latitude", localDeColeta.latitude)
+                setValue("longitude", localDeColeta.longitude)
+                setValue("nomeLocal", localDeColeta.nomeLocal)
+                setValue("numero", localDeColeta.numero)
+                setValue("tiposResiduos", localDeColeta.tiposResiduos)
+                setValue("complemento", localDeColeta.complemento)
+                setValue("bairro", localDeColeta.bairro)
+                setValue("logradouro", localDeColeta.logradouro)
+                setValue("cidade", localDeColeta.cidade)
+                setValue("uf", localDeColeta.uf)
+            }
         }
         catch (error){
             console.log(error)
@@ -37,7 +43,8 @@ function CadastroLocalDeColeta() {
     }
 
     useEffect(() => {
-        editarLocal(id)
+        mostrarLocalEditar
+(id)
     }, [id])
     const buscaCep = () =>{
         let cep = getValues("cep")
