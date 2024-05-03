@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 
 function CadastroLocalDeColeta() {
     const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm()
-    const {cadastrarLocalDeColeta} = useContext(LocalDeColetaContext)
+    const {cadastrarLocalDeColeta, getLocalDeColetaPorId, localDeColeta} = useContext(LocalDeColetaContext)
     const {id} = useParams()
     function sendForm(formValue) {
         console.log(formValue)
@@ -14,8 +14,22 @@ function CadastroLocalDeColeta() {
             cadastrarLocalDeColeta(formValue);
         }
     }
-    const editarLocal = (id) => {
-        console.log(id)
+    async function editarLocal (id)  {
+        try{
+            await getLocalDeColetaPorId(id)
+            setValue("cep", localDeColeta.cep)
+            setValue("descricaoLocal", localDeColeta.descricaoLocal)
+            setValue("latitude", localDeColeta.latitude)
+            setValue("longitude", localDeColeta.longitude)
+            setValue("nomeLocal", localDeColeta.nomeLocal)
+            setValue("numero", localDeColeta.numero)
+            setValue("tiposResiduos", localDeColeta.tiposResiduos)
+            // console.log(localDeColeta)
+        }
+        catch (error){
+            console.log(error)
+        }
+        
     }
 
     useEffect(() => {
