@@ -76,8 +76,13 @@ export const UsuariosContextProvider = ({children}) => {
             console.log("Erro na tentativa de login")
         }
     }
+    function deslogar(){
+        localStorage.removeItem("isAutenticado");
+        localStorage.removeItem("IdLogado");
+        window.location.href = "/login"
+    }
     return(
-        <UsuariosContext.Provider value={{usuarios, cadastrarUsuarios, getUsuariosCpf, login, contagemUsuarios, getUsuariosPorId}} >
+        <UsuariosContext.Provider value={{usuarios, cadastrarUsuarios, getUsuariosCpf, login, contagemUsuarios, getUsuariosPorId, deslogar}} >
             {children}
         </UsuariosContext.Provider>
     )

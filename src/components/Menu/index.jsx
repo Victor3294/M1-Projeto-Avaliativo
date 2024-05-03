@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom"
+import { UsuariosContext } from "../../context/UsuariosContext";
 
 function Menu(){
+    const {deslogar} = useContext(UsuariosContext)
     return(
         <>
             <header>
@@ -9,7 +12,7 @@ function Menu(){
                     <Link to={"/cadastroLocalDeColeta"}>Cadastrar novo local de coleta</Link>
                     <Link to={"/listagemLocalDeColeta"}>Lista dos locais de coleta</Link>
                 </nav>
-                <button>Sair</button>
+                <button onClick={() => {deslogar()}}>Sair</button>
             </header>
         </>
     )
