@@ -5,6 +5,7 @@ import Menu from "../../components/Menu"
 import { useParams } from "react-router-dom"
 
 function CadastroLocalDeColeta() {
+    const [carregando, setCarregando] = useState(true)
     const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm()
     const {cadastrarLocalDeColeta, getLocalDeColetaPorId, localDeColeta, editarLocalDeColeta} = useContext(LocalDeColetaContext)
     const {id} = useParams()
@@ -43,9 +44,20 @@ function CadastroLocalDeColeta() {
     }
 
     useEffect(() => {
-        mostrarLocalEditar
-(id)
-    }, [id])
+        async function carregandoEdição () {
+            try {
+                setCarregando(true)
+                await mostrarLocalEditar(id)
+            }
+            catch (error){
+                console.log(error)
+            }
+            finally{
+                setCarregando(false)
+            }
+        }
+        carregandoEdição()
+    }, [])
     const buscaCep = () =>{
         let cep = getValues("cep")
         if(!!cep && cep.length == 9){
@@ -64,6 +76,7 @@ function CadastroLocalDeColeta() {
     return (
         <>
             <Menu></Menu>
+            {carregando && <p>Carrgando...</p>}
             <form onSubmit={handleSubmit(sendForm)}>
                 <div>
                     <label htmlFor="">Nome do Local</label>
