@@ -5,78 +5,72 @@ import Menu from "../../components/Menu"
 import { useParams } from "react-router-dom"
 
 function CadastroLocalDeColeta() {
-    const [carregando, setCarregando] = useState(true)
-    const { register, handleSubmit, getValues, setValue, formState: {errors} } = useForm()
-    const {cadastrarLocalDeColeta, getLocalDeColetaPorId, localDeColeta, editarLocalDeColeta} = useContext(LocalDeColetaContext)
-    const {id} = useParams()
+    const { register, handleSubmit, getValues, setValue, formState: { errors } } = useForm()
+    const { cadastrarLocalDeColeta, getLocalDeColetaPorId, localDeColeta, editarLocalDeColeta } = useContext(LocalDeColetaContext)
+    const { id } = useParams()
     function sendForm(formValue) {
         console.log(formValue)
-        if(!!formValue){
-            if(!id){
+        if (!!formValue) {
+            if (!id) {
                 cadastrarLocalDeColeta(formValue)
                 return
             }
             editarLocalDeColeta(formValue, id)
         }
     }
-    async function mostrarLocalEditar (id)  {
-        try{
-            if(!!id){
+    async function mostrarLocalEditar(id) {
+        try {
+            if (!!id) {
                 await getLocalDeColetaPorId(id)
-                setValue("cep", localDeColeta.cep)
-                setValue("descricaoLocal", localDeColeta.descricaoLocal)
-                setValue("latitude", localDeColeta.latitude)
-                setValue("longitude", localDeColeta.longitude)
-                setValue("nomeLocal", localDeColeta.nomeLocal)
-                setValue("numero", localDeColeta.numero)
-                setValue("tiposResiduos", localDeColeta.tiposResiduos)
-                setValue("complemento", localDeColeta.complemento)
-                setValue("bairro", localDeColeta.bairro)
-                setValue("logradouro", localDeColeta.logradouro)
-                setValue("cidade", localDeColeta.cidade)
-                setValue("uf", localDeColeta.uf)
             }
         }
-        catch (error){
+        catch (error) {
             console.log(error)
         }
-        
+    }
+
+    function preencherCampos() {
+        setValue("cep", localDeColeta.cep)
+        setValue("descricaoLocal", localDeColeta.descricaoLocal)
+        setValue("latitude", localDeColeta.latitude)
+        setValue("longitude", localDeColeta.longitude)
+        setValue("nomeLocal", localDeColeta.nomeLocal)
+        setValue("numero", localDeColeta.numero)
+        setValue("tiposResiduos", localDeColeta.tiposResiduos)
+        setValue("complemento", localDeColeta.complemento)
+        setValue("bairro", localDeColeta.bairro)
+        setValue("logradouro", localDeColeta.logradouro)
+        setValue("cidade", localDeColeta.cidade)
+        setValue("uf", localDeColeta.uf)
     }
 
     useEffect(() => {
-        async function carregandoEdição () {
-            try {
-                setCarregando(true)
-                await mostrarLocalEditar(id)
-            }
-            catch (error){
-                console.log(error)
-            }
-            finally{
-                setCarregando(false)
-            }
-        }
-        carregandoEdição()
+        mostrarLocalEditar(id);
+        console.log("executou")
     }, [])
-    const buscaCep = () =>{
+
+    useEffect(() => {
+        preencherCampos()
+    }, [localDeColeta])
+
+    const buscaCep = () => {
         let cep = getValues("cep")
-        if(!!cep && cep.length == 9){
+        if (!!cep && cep.length == 9) {
             fetch(`https://viacep.com.br/ws/${cep}/json/`)
-            .then((response) => response.json())
-            .then((dados) => {
-                setValue("logradouro", dados.logradouro);
-                setValue("complemento", dados.complemento);
-                setValue("bairro", dados.bairro);
-                setValue("cidade", dados.localidade);
-                setValue("uf", dados.uf);
-            })
-            .catch((error) => console.log(error))
+                .then((response) => response.json())
+                .then((dados) => {
+                    setValue("logradouro", dados.logradouro);
+                    setValue("complemento", dados.complemento);
+                    setValue("bairro", dados.bairro);
+                    setValue("cidade", dados.localidade);
+                    setValue("uf", dados.uf);
+                })
+                .catch((error) => console.log(error))
         }
-      }
+    }
     return (
         <>
             <Menu></Menu>
-            {carregando && <p>Carrgando...</p>}
             <form onSubmit={handleSubmit(sendForm)}>
                 <div>
                     <label htmlFor="">Nome do Local</label>
@@ -99,7 +93,7 @@ function CadastroLocalDeColeta() {
                         placeholder="Digite seu CEP"
                         {...register("cep", {
                             required: "Por favor informe seu CEP",
-                            onBlur : () => buscaCep()
+                            onBlur: () => buscaCep()
                         })}
                     />
                     {errors?.cep && <p>{errors.cep?.message}</p>}
@@ -157,50 +151,50 @@ function CadastroLocalDeColeta() {
                 <div>
                     <label htmlFor="">Tipos de residuos aceitos</label>
                     <div>
-                        <input type="checkbox"  value="Vidro" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Vidro" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Vidro</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Papel" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Papel" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Papel</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Organico" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Organico" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Orgânico</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Plástico" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Plástico" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Plástico</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Bateria" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Bateria" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Bateria</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Papelao" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Papelão" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Papelão</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Outro" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Outro" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Outro</span>
                     </div>
                     {errors?.tiposResiduos && <p>Selecione pelo menos uma das opções</p>}
                 </div>
-                <input type="hidden" {...register("idUsuario")} value={localStorage.getItem("IdLogado")}/>
+                <input type="hidden" {...register("idUsuario")} value={localStorage.getItem("IdLogado")} />
 
                 <button type="submit">Cadastrar</button>
             </form>
