@@ -19,10 +19,10 @@ function CadastroLocalDeColeta() {
             editarLocalDeColeta(formValue, id)
         }
     }
-    function mostrarLocalEditar (id)  {
+    async function mostrarLocalEditar (id)  {
         try{
             if(!!id){
-                getLocalDeColetaPorId(id)
+                await getLocalDeColetaPorId(id)
                 setValue("cep", localDeColeta.cep)
                 setValue("descricaoLocal", localDeColeta.descricaoLocal)
                 setValue("latitude", localDeColeta.latitude)
@@ -156,20 +156,49 @@ function CadastroLocalDeColeta() {
                 </div>
                 <div>
                     <label htmlFor="">Tipos de residuos aceitos</label>
-                    <select {...register("tiposResiduos", {
-                        required: "Por favor selecione um dos tipos de residuos"
-                    })}>
-                        <option value="">Selecione um dos tipos de residuos</option>
-                        <option value="vidro">Vidro</option>
-                        <option value="papel">Papel</option>
-                        <option value="metal">Metal</option>
-                        <option value="organico">Orgânico</option>
-                        <option value="plastico">Plástico</option>
-                        <option value="bateria">Bateria</option>
-                        <option value="papelao">Papelão</option>
-                        <option value="outro">Outro</option>
-                    </select>
-                    {errors?.tiposResiduos && <p>{errors.tiposResiduos?.message}</p>}
+                    <div>
+                        <input type="checkbox"  value="Vidro" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Vidro</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Papel" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Papel</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Organico" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Orgânico</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Plástico" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Plástico</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Bateria" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Bateria</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Papelao" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Papelão</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Outro" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Outro</span>
+                    </div>
+                    {errors?.tiposResiduos && <p>Selecione pelo menos uma das opções</p>}
                 </div>
                 <input type="hidden" {...register("idUsuario")} value={localStorage.getItem("IdLogado")}/>
 
