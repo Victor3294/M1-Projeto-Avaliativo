@@ -21,11 +21,14 @@ export const LocalDeColetaContextProvider = ({children}) => {
         .catch((error) => console.log(error))
     }
 
-    function getLocalDeColetaPorId(id){
-        fetch("http://localhost:3000/localDeColeta/"+id)
-        .then((response) => response.json())
-        .then((dados) => setLocalDeColeta(dados))
-        .catch((error) => console.log(error))
+    async function getLocalDeColetaPorId(id){
+        try {
+            let data = await fetch("http://localhost:3000/localDeColeta/"+id);
+            let dados = await data.json();
+            setLocalDeColeta(dados);
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     function cadastrarLocalDeColeta(localDeColeta) {

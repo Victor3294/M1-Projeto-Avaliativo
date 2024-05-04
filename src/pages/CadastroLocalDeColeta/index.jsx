@@ -19,10 +19,10 @@ function CadastroLocalDeColeta() {
             editarLocalDeColeta(formValue, id)
         }
     }
-    function mostrarLocalEditar (id)  {
+    async function mostrarLocalEditar (id)  {
         try{
             if(!!id){
-                getLocalDeColetaPorId(id)
+                await getLocalDeColetaPorId(id)
                 setValue("cep", localDeColeta.cep)
                 setValue("descricaoLocal", localDeColeta.descricaoLocal)
                 setValue("latitude", localDeColeta.latitude)
