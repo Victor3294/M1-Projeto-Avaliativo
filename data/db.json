@@ -110,7 +110,11 @@
       "numero": "88",
       "latitude": "-27.538249485147947",
       "longitude": "-48.62616856442993",
-      "tiposResiduos": ["Papelão", "Papel", "Plástico"],
+      "tiposResiduos": [
+        "Papelão",
+        "Papel",
+        "Plástico"
+      ],
       "idUsuario": "1",
       "id": "eb00"
     },
@@ -127,7 +131,9 @@
       "numero": "123",
       "latitude": "-12.995365",
       "longitude": "-38.495911",
-      "tiposResiduos": ["Papelão"],
+      "tiposResiduos": [
+        "Papelão"
+      ],
       "idUsuario": "ed4a"
     },
     {
@@ -143,7 +149,9 @@
       "numero": "456",
       "latitude": "-7.132496",
       "longitude": "-34.839788",
-      "tiposResiduos": ["Papelão"],
+      "tiposResiduos": [
+        "Papelão"
+      ],
       "idUsuario": "66e7"
     },
     {
@@ -159,7 +167,9 @@
       "numero": "789",
       "latitude": "-5.821974",
       "longitude": "-35.252996",
-      "tiposResiduos": ["Papelão"],
+      "tiposResiduos": [
+        "Papelão"
+      ],
       "idUsuario": "1"
     },
     {
@@ -175,7 +185,9 @@
       "numero": "101",
       "latitude": "-19.775850",
       "longitude": "-42.138870",
-      "tiposResiduos": ["Papelão"],
+      "tiposResiduos": [
+        "Papelão"
+      ],
       "idUsuario": "1"
     },
     {
@@ -191,7 +203,9 @@
       "numero": "201",
       "latitude": "-9.966709",
       "longitude": "-67.800617",
-      "tiposResiduos": ["Papelão"],
+      "tiposResiduos": [
+        "Papelão"
+      ],
       "idUsuario": "1"
     }
   ]
