@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 
 function CadastroLocalDeColeta() {
     const { register, handleSubmit, getValues, setValue, formState: { errors } } = useForm()
-    const { cadastrarLocalDeColeta, getLocalDeColetaPorId, localDeColeta, editarLocalDeColeta } = useContext(LocalDeColetaContext)
+    const { cadastrarLocalDeColeta, getLocalDeColetaPorId, editarLocalDeColeta } = useContext(LocalDeColetaContext)
     const { id } = useParams()
     function sendForm(formValue) {
         console.log(formValue)
@@ -21,7 +21,20 @@ function CadastroLocalDeColeta() {
     async function mostrarLocalEditar(id) {
         try {
             if (!!id) {
-                await getLocalDeColetaPorId(id)
+                await getLocalDeColetaPorId(id).then((dados) => {
+                    setValue("cep", dados.cep)
+                    setValue("descricaoLocal", dados.descricaoLocal)
+                    setValue("latitude", dados.latitude)
+                    setValue("longitude", dados.longitude)
+                    setValue("nomeLocal", dados.nomeLocal)
+                    setValue("numero", dados.numero)
+                    setValue("tiposResiduos", dados.tiposResiduos)
+                    setValue("complemento", dados.complemento)
+                    setValue("bairro", dados.bairro)
+                    setValue("logradouro", dados.logradouro)
+                    setValue("cidade", dados.cidade)
+                    setValue("uf", dados.uf)
+                })
             }
         }
         catch (error) {
@@ -29,29 +42,10 @@ function CadastroLocalDeColeta() {
         }
     }
 
-    function preencherCampos() {
-        setValue("cep", localDeColeta.cep)
-        setValue("descricaoLocal", localDeColeta.descricaoLocal)
-        setValue("latitude", localDeColeta.latitude)
-        setValue("longitude", localDeColeta.longitude)
-        setValue("nomeLocal", localDeColeta.nomeLocal)
-        setValue("numero", localDeColeta.numero)
-        setValue("tiposResiduos", localDeColeta.tiposResiduos)
-        setValue("complemento", localDeColeta.complemento)
-        setValue("bairro", localDeColeta.bairro)
-        setValue("logradouro", localDeColeta.logradouro)
-        setValue("cidade", localDeColeta.cidade)
-        setValue("uf", localDeColeta.uf)
-    }
-
     useEffect(() => {
         mostrarLocalEditar(id);
-        console.log("executou")
     }, [])
 
-    useEffect(() => {
-        preencherCampos()
-    }, [localDeColeta])
 
     const buscaCep = () => {
         let cep = getValues("cep")
@@ -150,45 +144,45 @@ function CadastroLocalDeColeta() {
                 </div>
                 <div>
                     <div>
-                        <input type="checkbox"  value="Vidro" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Vidro" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Vidro</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Papel" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Papel" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Papel</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Orgânico" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Orgânico" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Orgânico</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Plástico" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Plástico" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Plástico</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Bateria" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Bateria" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Bateria</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Papelão" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Papelão" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Papelão</span>
                     </div>
                     <div>
-                        <input type="checkbox"  value="Outro" {...register("tiposResiduos", {
+                        <input type="checkbox" value="Outro" {...register("tiposResiduos", {
                             required: true
-                        })}/>
+                        })} />
                         <span>Outro</span>
                     </div>
                     {errors?.tiposResiduos && <p>Selecione pelo menos uma das opções</p>}
