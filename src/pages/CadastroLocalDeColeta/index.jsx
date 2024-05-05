@@ -149,21 +149,49 @@ function CadastroLocalDeColeta() {
                     {errors?.longitude && <p>{errors.longitude?.message}</p>}
                 </div>
                 <div>
-                    <label htmlFor="">Tipos de residuos aceitos</label>
-                        <select {...register("tiposResiduos", {
-                            required: "Por favor selecione um dos tipos de residuos"
-                        })}>
-                            <option value="">Selecione um dos tipos de residuos</option>
-                            <option value="Vidro">Vidro</option>
-                            <option value="Papel">Papel</option>
-                            <option value="Metal">Metal</option>
-                            <option value="Orgânico">Orgânico</option>
-                            <option value="Plástico">Plástico</option>
-                            <option value="Bateria">Bateria</option>
-                            <option value="Papelão">Papelão</option>
-                            <option value="Outro">Outro</option>
-                        </select>
-                    {errors?.tiposResiduos && <p>{errors.tiposResiduos?.message}</p>}
+                    <div>
+                        <input type="checkbox"  value="Vidro" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Vidro</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Papel" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Papel</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Orgânico" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Orgânico</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Plástico" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Plástico</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Bateria" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Bateria</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Papelão" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Papelão</span>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Outro" {...register("tiposResiduos", {
+                            required: true
+                        })}/>
+                        <span>Outro</span>
+                    </div>
+                    {errors?.tiposResiduos && <p>Selecione pelo menos uma das opções</p>}
                 </div>
                 <input type="hidden" {...register("idUsuario")} value={localStorage.getItem("IdLogado")} />
 
