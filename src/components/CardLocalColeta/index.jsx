@@ -13,7 +13,7 @@ function CardLocalColeta({localDeColeta, children}) {
                 <p>Numero: {localDeColeta.numero}</p>
                 <p>Latitude: {localDeColeta.latitude}</p>
                 <p>Longitude: {localDeColeta.longitude}</p>
-                <p>Tipo de Residuo que Coleta: {localDeColeta.tiposResiduos}</p>
+                <p>Tipo de Residuo que Coleta: {localDeColeta.tiposResiduos.map((tipoResiduo, index)=>(<span key={index}>{tipoResiduo}</span>))}</p>
                 <div>
                     {children}
                 </div> 
