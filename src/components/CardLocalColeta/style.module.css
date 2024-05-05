@@ -1,0 +1,22 @@
+.containerCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    padding: 16px;
+    width: 350px;
+    height: 300px;
+    margin-bottom: 25px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.titulo{
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.descricao{
+    font-size: 14px;
+}

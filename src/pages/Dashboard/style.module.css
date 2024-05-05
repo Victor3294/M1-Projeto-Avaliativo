@@ -1,0 +1,9 @@
+.containerCardLocalDeColeta{
+    display: flex;
+    padding: 2rem;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: #c0ff80;
+}

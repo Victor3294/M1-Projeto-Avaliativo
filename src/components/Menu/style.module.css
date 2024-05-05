@@ -1,0 +1,35 @@
+.header {
+    font-family: "Comfortaa", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    background-color: #89e442;
+    padding: 12px;
+}
+
+.link{
+    text-decoration: none;
+    color: #000;
+}
+
+.divNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem
+}
+
+.nav{
+    display: flex;
+    gap: 1rem;
+}
+
+.button{
+    background-color: #51c804;
+    font-family: "Comfortaa", sans-serif;
+    padding: 8px;
+    width: 100px;
+    border-radius: 8px;
+    border: none;
+}
