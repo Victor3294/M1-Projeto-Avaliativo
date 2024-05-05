@@ -1,0 +1,18 @@
+.containerCardLocalDeColeta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.button{
+    background-color: #51c804;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: bold;
+    padding: 8px;
+    width: 100px;
+    border-radius: 8px;
+    border: none;
+}
