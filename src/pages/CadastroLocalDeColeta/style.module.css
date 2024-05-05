@@ -1,0 +1,41 @@
+.containerPai{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+    align-items: center;
+    padding: 20px;
+}
+
+.containerFormulario{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 600px;
+}
+
+.caixaInput{
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    margin-top: 4px;
+    padding: 8px;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+}
+
+.erro{
+    font-weight: bold;
+    margin: 8px;
+}
+
+.button{
+    background-color: #51c804;
+    font-family: "Comfortaa", sans-serif;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+}
