@@ -6,7 +6,7 @@
     text-align: center;
     padding: 16px;
     width: 350px;
-    height: 300px;
+    height: 350px;
     margin-bottom: 25px;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -19,4 +19,12 @@
 
 .descricao{
     font-size: 14px;
+}
+
+.containerBotao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    gap: 2rem;
 }
