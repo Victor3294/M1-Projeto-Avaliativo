@@ -57,9 +57,12 @@ Para executar o projeto localmente, siga os passos abaixo:
 
 Algumas melhorias que podem ser aplicadas ao projeto incluem:
 
-- [Adição de um mapa para mostrar os locais de coleta]
-- [Controle de usuário, controlar quem pode editar um local de coleta, invés de ser aberto para qualquer usuário, apenas o que registrou ou o administrador poder alterar]
-- [E assim por diante]
+- Adição de um mapa para mostrar os locais de coleta
+- Controle de usuário, controlar quem pode editar um local de coleta, invés de ser aberto para qualquer usuário, apenas o que registrou ou o administrador poder alterar
+- Uma melhoria na estilização e a adição de responsividade no projeto, pois ele suporta apenas telas grande no momento
+- Uso de uma api real, em vez do json-server criar um banco de dados para esse projeto, e sua propria api em cima disso
+- Uma validação melhor nos formulários, pois agora ele apenas valida a obrigatoriedade deles
+- E assim por diante
 
 ---
 
