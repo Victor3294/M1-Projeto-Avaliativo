@@ -8,6 +8,8 @@ ReciclaFloripa
 
 O **ReciclaFloripa** é uma aplicação que resolve o problema de encontrar lugares que fazem coleta de material reciclável, ele faz isso através de sua incrivel base de dados que contem diversos locais de coletas registrados, e com a possibilidade de adição de mais locais através dos usuários. Foi desenvolvido usando o React, o CSS para sua estilização e o JSON-Server como sua base de dados e sua api. 
 
+Para assistir a uma demonstração do projeto, confira [este vídeo](https://drive.google.com/file/d/1KDsn9SgaN5TqvfGvHtrrbE6lbA03pPMM/view?usp=sharing).
+
 ---
 
 ## Executando o Projeto
